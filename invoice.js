@@ -51,6 +51,10 @@ function totalCalculation() {
    const  subTotal = calculateSubTotal();
    const subTotalDisplay = document.getElementById('sub-total');
    subTotalDisplay.innerText=subTotal;
+   const tax = subTotal * .2;
+      document.getElementById('tax').innerText = tax.toFixed(2);
+      document.getElementById('grand-total').innerText = subTotal + tax;
+      document.getElementById('grand-total-2').innerText = subTotal + tax;
 }
 
 function calculateSubTotal() {
@@ -60,6 +64,7 @@ function calculateSubTotal() {
       const element = cost[i];
       const price = parseInt(element.innerText);
       subTotal = subTotal + price;
+      
      
    }
    return subTotal;
