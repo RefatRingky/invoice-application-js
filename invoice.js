@@ -29,6 +29,8 @@ addButton.addEventListener('click',function () {
      const td2 = document.createElement('td'); 
      const td3 = document.createElement('td'); 
 
+     td3.classList.add('item-total');
+
      th.innerText  = itemName.value;
      td1.innerText = itemPrice.value;
      td2.innerText = itemQuantity.value;
@@ -42,5 +44,24 @@ addButton.addEventListener('click',function () {
      itemName.value = '';
      itemPrice.value = '';
      itemQuantity.value = '';
+     totalCalculation();
 });
+
+function totalCalculation() {
+   const  subTotal = calculateSubTotal();
+   const subTotalDisplay = document.getElementById('sub-total');
+   subTotalDisplay.innerText=subTotal;
+}
+
+function calculateSubTotal() {
+   let subTotal = 0;
+   const cost = document.getElementsByClassName('item-total');
+   for (let i = 0; i < cost.length; i++) {
+      const element = cost[i];
+      const price = parseInt(element.innerText);
+      subTotal = subTotal + price;
+     
+   }
+   return subTotal;
+}
 
